@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор опросов | Уралсиб</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Генератор опросов Уралсиб</h1>
+            <p>Анализ клиентского пути с помощью Llama 3.1</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="grid">
+            <!-- Форма генерации -->
+            <section class="card">
+                <h2>Новый опрос</h2>
+                <div class="form-group">
+                    <label>Путь клиента (JSON или текст)</label>
+                    <textarea id="journeyInput" placeholder='Пришел в банк...'></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Подсказка (необязательно)</label>
+                    <input type="text" id="hintInput" placeholder="Например: Клиент оформлял РКО">
+                </div>
+                <button id="generateBtn">Сгенерировать</button>
+            </section>
+
+            <!-- Результат -->
+            <section class="card" id="resultSection" style="display: none;">
+                <h2>Результат генерации</h2>
+                <div class="badges">
+                    <span class="badge" id="resCategory">Категория</span>
+                    <span class="badge" id="resRelevance">Релевантность</span>
+                </div>
+                <ul id="resQuestions" class="questions-list"></ul>
+                <button id="saveEditBtn" class="btn-secondary">Сохранить правки</button>
+            </section>
+        </div>
+
+        <!-- История -->
+        <section class="card full-width">
+            <div class="flex-between">
+                <h2>История опросов</h2>
+                <a href="/api/surveys/export/csv" class="btn-secondary">Экспорт CSV</a>
+            </div>
+            <div id="historyList" class="history-grid"></div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
